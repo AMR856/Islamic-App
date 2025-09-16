@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../core/resources/colors_manager.dart';
-
+import 'package:islami_app/core/resources/colors_manager.dart';
 
 class BarWidget extends StatelessWidget {
   final String iconName;
@@ -10,13 +9,8 @@ class BarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return NavigationDestination(
-      icon: Image.asset(
-        iconName,
-      ),
-      selectedIcon: Image.asset(
-        iconName,
-        color: ColorManager.white,
-      ),
+      icon: Image.asset(iconName),
+      selectedIcon: Image.asset(iconName, color: ColorManager.white),
       label: iconLabel,
     );
   }

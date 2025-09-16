@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:islami_app/core/extensions/context_size.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami_app/core/models/hadith_model.dart';
 import 'package:islami_app/core/resources/assets_manager.dart';
 import 'package:islami_app/core/resources/colors_manager.dart';
@@ -13,7 +13,6 @@ class HadithAlone extends StatefulWidget {
 }
 
 class _HadithAloneState extends State<HadithAlone> {
-  // 430 * 932
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,13 +23,8 @@ class _HadithAloneState extends State<HadithAlone> {
             Navigator.pop(context);
           },
           child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: context.getWidth() * 32 / 430,
-            ),
-            child: Icon(
-              Icons.arrow_back_rounded,
-              size: context.getWidth() * 30 / 432,
-            ),
+            padding: EdgeInsets.symmetric(horizontal: 32.w),
+            child: Icon(Icons.arrow_back_rounded, size: 30.sp),
           ),
         ),
         foregroundColor: ColorManager.gold,
@@ -38,38 +32,39 @@ class _HadithAloneState extends State<HadithAlone> {
         title: Center(
           child: Text(
             '${widget.hadithModel.index + 1} Hadith',
-            style: TextStyle(
-              fontSize: context.getWidth() * 20 / 430,
-              fontFamily: 'Janna',
-            ),
+            style: TextStyle(fontSize: 20.sp, fontFamily: 'Janna'),
           ),
         ),
+        actions: [SizedBox(width: 32.w + 30.sp)],
       ),
       backgroundColor: ColorManager.black,
       body: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              RotatedBox(
-                quarterTurns: 3,
-                child: Image.asset(AssetsManager.rightCorner),
-              ),
-              Expanded(
-                child: Text(
-                  widget.hadithModel.name,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontFamily: 'Janna',
-                    fontSize: context.getWidth() * 24 / 430,
-                    color: ColorManager.gold,
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                RotatedBox(
+                  quarterTurns: 3,
+                  child: Image.asset(AssetsManager.rightCorner),
+                ),
+                Expanded(
+                  child: Text(
+                    widget.hadithModel.name,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontFamily: 'Janna',
+                      fontSize: 24.sp,
+                      color: ColorManager.gold,
+                    ),
                   ),
                 ),
-              ),
-              Image.asset(AssetsManager.rightCorner),
-            ],
+                Image.asset(AssetsManager.rightCorner),
+              ],
+            ),
           ),
-          SizedBox(height: context.getHeight() * 25 / 932),
+          SizedBox(height: 25.h),
           widget.hadithModel.content.isEmpty
               ? Expanded(
                   child: Center(
@@ -79,32 +74,28 @@ class _HadithAloneState extends State<HadithAlone> {
               : Expanded(
                   child: Container(
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(
-                        context.getWidth() * 15 / 432,
-                      ),
+                      borderRadius: BorderRadius.circular(15.r),
                       border: Border.all(color: ColorManager.gold),
                       color: ColorManager.black,
                     ),
                     padding: EdgeInsets.symmetric(
-                      vertical: context.getHeight() * 10 / 932,
-                      horizontal: context.getWidth() * 10 / 432,
+                      vertical: 10.h,
+                      horizontal: 10.w,
                     ),
-                    margin: EdgeInsets.symmetric(
-                      horizontal: context.getWidth() * 20 / 432,
-                    ),
+                    margin: EdgeInsets.symmetric(horizontal: 20.w),
                     child: Text(
                       widget.hadithModel.content,
                       textDirection: TextDirection.rtl,
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        fontSize: context.getWidth() * 20 / 432,
+                        fontSize: 20.sp,
                         color: ColorManager.gold,
                         fontFamily: 'Janna',
                       ),
                     ),
                   ),
                 ),
-          SizedBox(height: context.getHeight() * 20 / 932),
+          SizedBox(height: 20.h),
           Opacity(
             opacity: 0.6,
             child: Image.asset(AssetsManager.mosqueDecoration),

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:islami_app/core/extensions/context_size.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami_app/core/resources/assets_manager.dart';
 import 'package:islami_app/core/resources/suras_manager.dart';
 import 'package:islami_app/features/main_layout/quran_tab/widgets/most_recently.dart';
 import 'package:islami_app/features/main_layout/quran_tab/widgets/search_text_field.dart';
 import 'package:islami_app/features/main_layout/quran_tab/widgets/suras_list.dart';
-import '../../../core/models/sura_model.dart';
-import '../../../core/resources/colors_manager.dart';
+import 'package:islami_app/core/models/sura_model.dart';
+import 'package:islami_app/core/resources/colors_manager.dart';
 
 class QuranTab extends StatefulWidget {
   const QuranTab({super.key});
@@ -42,7 +42,7 @@ class _QuranTabState extends State<QuranTab> {
               gradient: LinearGradient(
                 colors: [
                   ColorManager.black,
-                  ColorManager.black.withOpacity(0.7),
+                  ColorManager.black.withValues(alpha: 0.7),
                 ],
                 begin: Alignment.bottomCenter,
                 end: Alignment.topCenter,
@@ -53,37 +53,20 @@ class _QuranTabState extends State<QuranTab> {
         Positioned.fill(
           child: Padding(
             padding: EdgeInsets.symmetric(
-              vertical: context.getHeight() * 30 / 932,
+              vertical: 30.h,
             ),
             child: Column(
               children: [
                 Image.asset(AssetsManager.logo3x),
                 Padding(
-                  padding: EdgeInsets.all(context.getWidth() * 20 / 430),
+                  padding: EdgeInsets.all(20.sp),
                   child: SearchTextField(onSearch: onSearch),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                    vertical: context.getHeight() * 15 / 932,
-                    horizontal: context.getWidth() * 21 / 432,
-                  ),
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      'Most Recently',
-                      style: TextStyle(
-                        fontFamily: 'Janna',
-                        color: ColorManager.white,
-                        fontSize: context.getWidth() * 16 / 432,
-                      ),
-                    ),
-                  ),
                 ),
                 MostRecently(key: mostRecentlyKey),
                 Padding(
                   padding: EdgeInsets.symmetric(
-                    vertical: context.getHeight() * 10 / 932,
-                    horizontal: context.getWidth() * 21 / 432,
+                    vertical: 10.h,
+                    horizontal: 21.w,
                   ),
                   child: Align(
                     alignment: Alignment.centerLeft,
@@ -92,7 +75,7 @@ class _QuranTabState extends State<QuranTab> {
                       style: TextStyle(
                         fontFamily: 'Janna',
                         color: ColorManager.white,
-                        fontSize: context.getWidth() * 16 / 432,
+                        fontSize: 16.sp,
                       ),
                     ),
                   ),

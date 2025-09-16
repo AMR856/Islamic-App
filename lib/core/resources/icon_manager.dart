@@ -26,5 +26,5 @@ abstract class IconManager{
   static final String time3x = 'assets/images/3x/ic_time@3x.png';
 
   static final String volumeUpIcon = 'assets/images/3x/Volume High.png';
-  static final String volumeDownIcon = 'assets/images/3x/Volume Down.png';
+  static final String volumeOffIcon = 'assets/images/3x/Volume Down.png';
 }

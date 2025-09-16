@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:islami_app/core/extensions/context_size.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami_app/core/models/hadith_model.dart';
 import 'package:islami_app/features/main_layout/hadith_tab/widgets/hadith_alone.dart';
-import '../../../core/resources/assets_manager.dart';
-import '../../../core/resources/colors_manager.dart';
+import 'package:islami_app/core/resources/assets_manager.dart';
+import 'package:islami_app/core/resources/colors_manager.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 class HadithTab extends StatefulWidget {
@@ -52,7 +52,7 @@ class _HadithTabState extends State<HadithTab> {
               gradient: LinearGradient(
                 colors: [
                   ColorManager.black,
-                  ColorManager.black.withOpacity(0.7),
+                  ColorManager.black.withValues(alpha: 0.7),
                 ],
                 begin: Alignment.bottomCenter,
                 end: Alignment.topCenter,
@@ -63,12 +63,12 @@ class _HadithTabState extends State<HadithTab> {
         Positioned.fill(
           child: Padding(
             padding: EdgeInsets.symmetric(
-              vertical: context.getHeight() * 30 / 932,
+              vertical: 30.h,
             ),
             child: Column(
               children: [
                 Image.asset(AssetsManager.logo3x),
-                SizedBox(height: context.getHeight() * 40 / 932),
+                SizedBox(height: 50.h),
                 if (hadithList.isEmpty)
                   CircularProgressIndicator(color: ColorManager.gold)
                 else
@@ -95,17 +95,15 @@ class _HadithTabState extends State<HadithTab> {
                                 decoration: BoxDecoration(
                                   color: ColorManager.gold,
                                   borderRadius: BorderRadius.all(
-                                    Radius.circular(
-                                      context.getWidth() * 20 / 430,
-                                    ),
+                                    Radius.circular(20.r),
                                   ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsets.only(
-                                    top: context.getHeight() * 15 / 932,
-                                    left: context.getWidth() * 9 / 430,
-                                    right: context.getWidth() * 9 / 430,
-                                    bottom: context.getHeight() * 30 / 932,
+                                    top: 15.h,
+                                    left: 9.w,
+                                    right: 9.w,
+                                    bottom: 30.h,
                                   ),
                                   child: Column(
                                     children: [
@@ -124,10 +122,7 @@ class _HadithTabState extends State<HadithTab> {
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
                                                 fontFamily: 'Janna',
-                                                fontSize:
-                                                    context.getWidth() *
-                                                    24 /
-                                                    430,
+                                                fontSize: 24.sp,
                                                 color: ColorManager.black,
                                               ),
                                             ),
@@ -138,17 +133,14 @@ class _HadithTabState extends State<HadithTab> {
                                           ),
                                         ],
                                       ),
-                                      SizedBox(
-                                        height: context.getHeight() * 12 / 932,
-                                      ),
+                                      SizedBox(height: 12.h),
                                       Expanded(
                                         child: SingleChildScrollView(
                                           child: Text(
                                             hadith.content,
                                             style: TextStyle(
                                               fontFamily: 'Janna',
-                                              fontSize:
-                                                  context.getWidth() * 16 / 430,
+                                              fontSize: 16.sp,
                                               color: ColorManager.black,
                                             ),
                                             textAlign: TextAlign.center,
@@ -172,12 +164,8 @@ class _HadithTabState extends State<HadithTab> {
                                 alignment: Alignment.bottomCenter,
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.only(
-                                    bottomLeft: Radius.circular(
-                                      context.getWidth() * 20 / 430,
-                                    ),
-                                    bottomRight: Radius.circular(
-                                      context.getWidth() * 20 / 430,
-                                    ),
+                                    bottomLeft: Radius.circular(20.sp),
+                                    bottomRight: Radius.circular(20.sp),
                                   ),
                                   child: Opacity(
                                     opacity: 0.5,

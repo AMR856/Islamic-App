@@ -47,4 +47,9 @@ abstract class AssetsManager{
   // more background
   static final String timeBackground = 'assets/images/3x/more_bg.png';
 
+  // static azkar backgrounds
+  static final String eveningBackground = 'assets/images/evening_azkar.png';
+  static final String morningBackground = 'assets/images/morning_azkar.png';
+  static final String sleepingBackground = 'assets/images/sleeping_azkar.png';
+  static final String wakingBackground = 'assets/images/waking_azkar.png';
 }

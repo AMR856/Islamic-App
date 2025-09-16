@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami_app/core/resources/colors_manager.dart';
 import 'package:islami_app/core/resources/icon_manager.dart';
 import 'package:islami_app/features/main_layout/bar_widget.dart';
@@ -22,7 +23,7 @@ class _MainLayoutState extends State<MainLayout> {
     HadithTab(),
     TasbehTab(),
     RadioTab(),
-    TimeTab(),
+    TimeTab()
   ];
 
   @override
@@ -32,11 +33,11 @@ class _MainLayoutState extends State<MainLayout> {
       body: tabs[_currentIndex],
       bottomNavigationBar: NavigationBar(
         labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
-        indicatorColor: ColorManager.black.withOpacity(0.6),
+        indicatorColor: ColorManager.black.withValues(alpha: 0.6),
         backgroundColor: ColorManager.gold,
         labelTextStyle: WidgetStatePropertyAll(
           TextStyle(
-            fontSize: 12,
+            fontSize: 12.sp,
             fontFamily: 'Janna',
             fontWeight: FontWeight.w700,
             color: ColorManager.white,

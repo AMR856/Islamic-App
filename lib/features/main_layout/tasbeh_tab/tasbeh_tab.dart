@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'dart:math';
-import 'package:islami_app/core/extensions/context_size.dart';
-import '../../../core/resources/assets_manager.dart';
-import '../../../core/resources/colors_manager.dart';
+import 'package:islami_app/core/resources/assets_manager.dart';
+import 'package:islami_app/core/resources/colors_manager.dart';
 
 class TasbehTab extends StatefulWidget {
   final List<String> azkar = [
@@ -55,7 +55,7 @@ class _TasbehTabState extends State<TasbehTab> {
               gradient: LinearGradient(
                 colors: [
                   ColorManager.black,
-                  ColorManager.black.withOpacity(0.7),
+                  ColorManager.black.withValues(alpha: 0.7),
                 ],
                 begin: Alignment.bottomCenter,
                 end: Alignment.topCenter,
@@ -66,19 +66,19 @@ class _TasbehTabState extends State<TasbehTab> {
         Positioned.fill(
           child: Padding(
             padding: EdgeInsets.symmetric(
-              vertical: context.getHeight() * 30 / 932,
+              vertical: 30.h,
             ),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
                 Image.asset(AssetsManager.logo3x),
                 Padding(
-                  padding: EdgeInsets.all(context.getWidth() * 25 / 430),
+                  padding: EdgeInsets.symmetric(vertical: 25.h),
                   child: Text(
                     'سَبِّحِ اسْمَ رَبِّكَ الأعلى',
                     style: TextStyle(
                       fontFamily: 'Janna',
-                      fontSize: context.getWidth() * 38 / 430,
+                      fontSize: 38.sp,
                       color: ColorManager.white,
                     ),
                   ),
@@ -109,17 +109,17 @@ class _TasbehTabState extends State<TasbehTab> {
                               widget.azkar[widget._currentIndex],
                               style: TextStyle(
                                 fontSize: widget._currentIndex == 4
-                                    ? context.getWidth() * 28 / 430
-                                    : context.getWidth() * 36 / 430,
+                                    ? 28.sp
+                                    : 36.sp,
                                 color: ColorManager.white,
                                 fontFamily: 'Janna',
                               ),
                             ),
-                            SizedBox(height: context.getHeight() * 20 / 932),
+                            SizedBox(height: 20.h),
                             Text(
                               '${widget._currentCount}',
                               style: TextStyle(
-                                fontSize: context.getWidth() * 36 / 430,
+                                fontSize: 36.sp,
                                 color: ColorManager.white,
                                 fontFamily: 'Janna',
                               ),

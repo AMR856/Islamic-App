@@ -1,20 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:islami_app/core/extensions/context_size.dart';
-import '../../../../core/resources/assets_manager.dart';
-import '../../../../core/resources/colors_manager.dart';
-import '../../../../core/resources/icon_manager.dart';
-import '../../../../core/resources/radio_reciters_list.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:islami_app/core/resources/assets_manager.dart';
+import 'package:islami_app/core/resources/colors_manager.dart';
+import 'package:islami_app/core/resources/icon_manager.dart';
+import 'package:islami_app/core/resources/radio_reciters_list.dart';
 
 class RadioElement extends StatefulWidget {
   final int index;
+  final int? playingIndex;
   final bool isRadio;
   final bool isPlaying;
+  final bool isMuted;
   final Future<void> Function(int index) togglePlay;
+  final Future<void> Function() toggleMute;
+
   const RadioElement({
     super.key,
     required this.index,
     required this.isRadio,
-    required this.togglePlay, required this.isPlaying,
+    required this.togglePlay,
+    required this.isPlaying,
+    required this.isMuted,
+    required this.toggleMute,
+    required this.playingIndex,
   });
 
   @override
@@ -26,21 +34,31 @@ class _RadioElementState extends State<RadioElement> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: context.getHeight() * 141 / 932,
+      height: 140.h,
       decoration: BoxDecoration(
         color: ColorManager.gold,
-        borderRadius: BorderRadius.circular(context.getWidth() * 17 / 430),
+        borderRadius: BorderRadius.circular(16.sp),
       ),
       child: Padding(
-        padding: EdgeInsets.only(top: context.getHeight() * 12 / 932),
+        padding: EdgeInsets.only(top: 12.h),
         child: Stack(
           children: [
-            Positioned.fill(
-              child: Image(
-                fit: BoxFit.cover,
-                image: AssetImage(AssetsManager.mosqueDecoration),
+            Align(
+              alignment: Alignment(0, 2.h),
+              child: Opacity(
+                opacity: widget.isPlaying ? 0.4 : 1.0,
+                child: Image.asset(
+                  widget.isPlaying
+                      ? AssetsManager.soundWave
+                      : AssetsManager.mosqueDecoration,
+                  fit: BoxFit.cover,
+                  width: double.infinity,
+                  height: widget.isPlaying ? 100.h : 130.h,
+                ),
               ),
             ),
+
+            // Foreground content
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -49,28 +67,41 @@ class _RadioElementState extends State<RadioElement> {
                       ? 'Radio ${RadioReciters.radioList[widget.index]}'
                       : RadioReciters.recitersList[widget.index],
                   style: TextStyle(
-                    fontSize: context.getWidth() * 20 / 432,
+                    fontSize: 22.sp,
                     fontFamily: 'Janna',
                     color: ColorManager.black,
                   ),
                 ),
-                SizedBox(height: context.getHeight() * 30 / 932),
+                SizedBox(height: 30.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    InkWell(
-                      onTap: () {
-                        widget.togglePlay(widget.index);
-                      },
-                      child: Icon(
-                        widget.isPlaying ? Icons.pause : Icons.play_arrow_rounded  ,
-                        size: context.getWidth() * 70 / 430,
+                    Center(
+                      child: InkWell(
+                        onTap: () {
+                          widget.togglePlay(widget.index);
+                        },
+                        child: Icon(
+                          widget.isPlaying
+                              ? Icons.pause
+                              : Icons.play_arrow_rounded,
+                          size: 70.sp,
+                        ),
                       ),
                     ),
-                    SizedBox(width: context.getWidth() * 20 / 430),
-                    ImageIcon(
-                      AssetImage(IconManager.volumeUpIcon),
-                      size: context.getWidth() * 40 / 430,
+                    SizedBox(width: 20.w),
+                    InkWell(
+                      onTap: () {
+                        widget.toggleMute();
+                      },
+                      child: ImageIcon(
+                        AssetImage(
+                          widget.isMuted && widget.playingIndex == widget.index
+                              ? IconManager.volumeOffIcon
+                              : IconManager.volumeUpIcon,
+                        ),
+                        size: 40.sp,
+                      ),
                     ),
                   ],
                 ),

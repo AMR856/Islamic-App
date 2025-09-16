@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
-import 'package:islami_app/features/main_layout/quran_tab/widgets/most_recently.dart';
 
-import '../models/sura_model.dart';
+import 'package:islami_app/core/models/sura_model.dart';
 
 abstract class SurasManager {
   static List<String> arabicQuranSuras = [

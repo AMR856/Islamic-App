@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:islami_app/core/extensions/context_size.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami_app/core/routes/routes_manager.dart';
 import 'package:islami_app/features/main_layout/quran_tab/widgets/most_recently.dart';
 import 'package:islami_app/core/models/sura_model.dart';
@@ -22,7 +22,7 @@ class SurasList extends StatelessWidget {
         itemBuilder: (context, index) {
           return Padding(
             padding: EdgeInsets.symmetric(
-              horizontal: context.getWidth() * 15 / 432,
+              horizontal: 15.h,
             ),
             child: InkWell(
               onTap: () {
@@ -49,12 +49,12 @@ class SurasList extends StatelessWidget {
                         style: TextStyle(
                           fontFamily: 'Janna',
                           color: ColorManager.white,
-                          fontSize: context.getWidth() * 20 / 432,
+                          fontSize: 20.sp,
                         ),
                       ),
                     ],
                   ),
-                  SizedBox(width: context.getWidth() * 24 / 432),
+                  SizedBox(width: 24.w),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -62,15 +62,15 @@ class SurasList extends StatelessWidget {
                       Text(
                         filteredSuras[index].nameEn,
                         style: TextStyle(
-                          fontSize: context.getWidth() * 20 / 432,
+                          fontSize: 20.sp,
                           fontFamily: 'Janna',
                           color: ColorManager.white,
                         ),
                       ),
                       Text(
-                        '${filteredSuras[index].versesCount}',
+                        '${filteredSuras[index].versesCount} Verses',
                         style: TextStyle(
-                          fontSize: context.getWidth() * 14 / 432,
+                          fontSize: 14.sp,
                           fontFamily: 'Janna',
                           color: ColorManager.white,
                         ),
@@ -81,7 +81,7 @@ class SurasList extends StatelessWidget {
                   Text(
                     filteredSuras[index].nameAr,
                     style: TextStyle(
-                      fontSize: context.getWidth() * 20 / 432,
+                      fontSize: 20.sp,
                       fontFamily: 'Janna',
                       color: ColorManager.white,
                     ),
@@ -92,8 +92,8 @@ class SurasList extends StatelessWidget {
           );
         },
         separatorBuilder: (context, index) => Divider(
-          indent: context.getWidth() * 64 / 432,
-          endIndent: context.getWidth() * 64 / 432,
+          indent: 64.w,
+          endIndent: 64.w,
         ),
         itemCount: filteredSuras.length,
       ),

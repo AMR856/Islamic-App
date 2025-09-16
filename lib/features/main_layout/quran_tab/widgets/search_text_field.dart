@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:islami_app/core/extensions/context_size.dart';
-
-import '../../../../core/resources/colors_manager.dart';
-import '../../../../core/resources/icon_manager.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:islami_app/core/resources/colors_manager.dart';
+import 'package:islami_app/core/resources/icon_manager.dart';
 
 class SearchTextField extends StatelessWidget {
   final Function(String) onSearch;
@@ -17,7 +16,7 @@ class SearchTextField extends StatelessWidget {
       style: TextStyle(
         fontFamily: 'Janna',
         color: ColorManager.white,
-        fontSize: context.getWidth() * 16 / 432,
+        fontSize: 16.sp,
       ),
       cursorColor: ColorManager.white,
       decoration: InputDecoration(
@@ -25,26 +24,17 @@ class SearchTextField extends StatelessWidget {
         hintStyle: TextStyle(
           fontFamily: 'Janna',
           color: ColorManager.white,
-          fontSize: context.getWidth() * 16 / 432,
+          fontSize: 16.sp,
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(10)),
-          borderSide: BorderSide(
-            color: ColorManager.gold,
-            width: 1,
-          ),
+          borderRadius: BorderRadius.all(Radius.circular(10.r)),
+          borderSide: BorderSide(color: ColorManager.gold, width: 1.w),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(10)),
-          borderSide: BorderSide(
-            color: ColorManager.gold,
-            width: 1,
-          ),
+          borderRadius: BorderRadius.all(Radius.circular(10.r)),
+          borderSide: BorderSide(color: ColorManager.gold, width: 1.w),
         ),
-        prefixIcon: Image.asset(
-          IconManager.quran3x,
-          color: ColorManager.gold,
-        ),
+        prefixIcon: Image.asset(IconManager.quran3x, color: ColorManager.gold),
       ),
     );
   }
