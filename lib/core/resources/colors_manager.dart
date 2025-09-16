@@ -6,4 +6,5 @@ abstract class ColorManager{
   static final Color white = Color(0xFFFFFFFF);
   static final Color brown = Color(0xFF856B3F);
   static final Color lightBrown = Color(0xFFB19768);
+  static final Color lightGray = Color(0xFF707070);
 }

@@ -52,4 +52,13 @@ abstract class AssetsManager{
   static final String morningBackground = 'assets/images/morning_azkar.png';
   static final String sleepingBackground = 'assets/images/sleeping_azkar.png';
   static final String wakingBackground = 'assets/images/waking_azkar.png';
+
+
+  // onboarding images
+  static final String onboarding1 = 'assets/images/3x/onborading_1.png';
+  static final String onboarding2 = 'assets/images/3x/onborading_2.png';
+  static final String onboarding3 = 'assets/images/3x/onboarding_3.png';
+  static final String onboarding4 = 'assets/images/3x/onborading_4.png';
+  static final String onboarding5 = 'assets/images/3x/onboarding_5.png';
+
 }

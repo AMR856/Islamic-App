@@ -34,9 +34,6 @@ class _AzkarDetailsState extends State<AzkarDetails> {
       setState(() {
 
       });
-      for (var item in azkar) {
-        debugPrint(item);
-      }
     } catch(e){
       debugPrint(e.toString());
     }
